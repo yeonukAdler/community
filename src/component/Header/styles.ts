@@ -1,5 +1,14 @@
 import styled from 'styled-components';
 
-export const TextColor = styled.p`
-  color: red;
+export const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  background-color: purple;
+`;
+
+export const HeaderButton = styled.button`
+  width: 5rem;
+  height: 3rem;
+  margin: 0.5%;
 `;

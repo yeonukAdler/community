@@ -1,17 +1,24 @@
-import { TextColor } from './styles';
+import { BoardTitle, BoardContainer, BoardText, HomeContainer, BoardContent, WriteButton } from './styles';
+import Header from 'component/Header/index';
+import { useNavigate } from 'react-router-dom';
 
 function Home(): JSX.Element {
+  const navigate = useNavigate();
   return (
-    <div className="App">
-      <header className="App-header">
-        <TextColor>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </TextColor>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HomeContainer>
+      <Header />
+      <BoardContainer>
+        <BoardTitle>연욱이의 게시판</BoardTitle>
+        <BoardContent>
+          <BoardText>번호</BoardText>
+          <BoardText>제목</BoardText>
+          <BoardText>작성자</BoardText>
+          <BoardText>날짜</BoardText>
+          <BoardText>조회수</BoardText>
+        </BoardContent>
+        <WriteButton onClick={() => navigate('/write')}>글 작성하기</WriteButton>
+      </BoardContainer>
+    </HomeContainer>
   );
 }
 
