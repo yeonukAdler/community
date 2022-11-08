@@ -16,12 +16,10 @@ import Modal from 'react-modal';
 
 const customStyles = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
+    top: '20%',
+    bottom: '20%',
+    left: '20%',
+    right: '20%',
   },
 };
 
@@ -48,8 +46,8 @@ function Write(): JSX.Element {
   return (
     <WriteContainer>
       <Header />
-      <WriteButton onClick={openModal}>asdasda</WriteButton>
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+      <WriteButton onClick={openModal}>작성하기</WriteButton>
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles}>
         <InputContainer>
           <WriteTitle>아래의 입력폼에 정보를 기입해주세요.</WriteTitle>
           <BoardContent>
@@ -69,9 +67,9 @@ function Write(): JSX.Element {
               <WriteButton type="submit">제출하기</WriteButton>
             </WriteForm>
           </BoardContent>
-          <WriteButton onClick={() => navigate('/')}>게시글 확인하러 가기</WriteButton>
         </InputContainer>
       </Modal>
+      <WriteButton onClick={() => navigate('/')}>게시글 확인하러 가기</WriteButton>
     </WriteContainer>
   );
 }

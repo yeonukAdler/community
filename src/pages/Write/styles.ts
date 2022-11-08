@@ -27,9 +27,8 @@ export const WriteText = styled.p`
 
 export const WriteButton = styled.button`
   font-size: large;
-  margin-right: 1%;
   width: 15rem;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem;
 `;
 
 export const WriteForm = styled.form`
