@@ -26,12 +26,15 @@ export const WriteText = styled.p`
 `;
 
 export const WriteButton = styled.button`
-  width: 5rem;
-  height: 3rem;
+  font-size: large;
+  margin-right: 1%;
+  width: 15rem;
+  margin-bottom: 0.5rem;
 `;
 
 export const WriteForm = styled.form`
-  width: 60%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const InputArea = styled.div`
@@ -39,13 +42,19 @@ export const InputArea = styled.div`
   height: 3rem;
   /* border: 1px solid; */
   align-items: center;
+  width: 50rem;
 `;
 
 export const Input = styled.input`
-  /* border: 1px solid; */
+  border: 1px solid;
   border-radius: 0.25rem;
   font-weight: 400;
   margin: 0 2rem;
   width: 80%;
   height: 60%;
+`;
+
+export const FormText = styled.p`
+  font-size: medium;
+  width: 4rem;
 `;

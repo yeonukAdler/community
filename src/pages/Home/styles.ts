@@ -21,7 +21,7 @@ export const BoardContent = styled.div`
 export const BoardText = styled.p`
   font-size: 1rem;
   color: red;
-  padding-right: 0.5rem;
+  padding-right: 3rem;
 `;
 
 export const WriteButton = styled.button`

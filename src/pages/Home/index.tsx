@@ -10,11 +10,14 @@ function Home(): JSX.Element {
       <BoardContainer>
         <BoardTitle>연욱이의 게시판</BoardTitle>
         <BoardContent>
-          <BoardText>번호</BoardText>
           <BoardText>제목</BoardText>
+          <BoardText>내용</BoardText>
           <BoardText>작성자</BoardText>
-          <BoardText>날짜</BoardText>
-          <BoardText>조회수</BoardText>
+        </BoardContent>
+        <BoardContent>
+          <BoardText>제목</BoardText>
+          <BoardText>내용</BoardText>
+          <BoardText>작성자</BoardText>
         </BoardContent>
         <WriteButton onClick={() => navigate('/write')}>글 작성하기</WriteButton>
       </BoardContainer>
