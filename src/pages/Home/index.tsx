@@ -32,13 +32,9 @@ function Home(): JSX.Element {
   const navigate = useNavigate();
   const [values, setValues] = useState({ title: '', content: '', author: '' });
   const [modalIsOpen, setIsOpen] = React.useState(false);
-  const [modal2IsOpen, set2IsOpen] = React.useState(false);
 
   function openModal() {
     setIsOpen(true);
-  }
-  function open2Modal() {
-    set2IsOpen(true);
   }
   function closeModal() {
     setIsOpen(false);
@@ -48,9 +44,20 @@ function Home(): JSX.Element {
     setValues({ ...values, [name]: value });
   };
   const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    let saveInputValues = values;
+    // event.preventDefault();
   };
+
+  function alert() {
+    if (!window.confirm('정말 삭제하시겠습니까?')) {
+      window.alert('취소하셨습니다.');
+    } else {
+      values.author = '';
+      values.content = '';
+      values.title = '';
+      window.alert('삭제하였습니다.');
+      window.location.reload();
+    }
+  }
 
   return (
     <HomeContainer>
@@ -91,15 +98,9 @@ function Home(): JSX.Element {
             </BoardContent>
           </InputContainer>
         </Modal>
-        <WriteButton id="a" onClick={openModal}>
-          글 작성하기
-        </WriteButton>
-        <WriteButton id="b" onClick={openModal}>
-          글 수정하기
-        </WriteButton>
-        <WriteButton id="c" onClick={openModal}>
-          글 삭제하기
-        </WriteButton>
+        <WriteButton onClick={openModal}>글 작성하기</WriteButton>
+        <WriteButton onClick={openModal}>글 수정하기</WriteButton>
+        <WriteButton onClick={alert}>글 삭제하기</WriteButton>
       </BoardContainer>
     </HomeContainer>
   );
