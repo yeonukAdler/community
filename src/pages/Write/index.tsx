@@ -11,45 +11,67 @@ import {
 } from './styles';
 import Header from 'component/Header/index';
 import { useNavigate } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import Modal from 'react-modal';
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
 
 function Write(): JSX.Element {
   const navigate = useNavigate();
   const [values, setValues] = useState({ title: '', content: '', author: '' });
+  const [modalIsOpen, setIsOpen] = React.useState(false);
 
+  function openModal() {
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setValues({ ...values, [name]: value });
   };
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+    console.log(values);
   };
 
   return (
     <WriteContainer>
       <Header />
-      <InputContainer>
-        <WriteTitle>아래의 입력폼에 정보를 기입해주세요.</WriteTitle>
-        <BoardContent>
-          <WriteForm onSubmit={handleSubmit}>
-            <InputArea>
-              <FormText>제목 : </FormText>
-              <Input type="text" name="title" value={values.title} onChange={handleChange} />
-            </InputArea>
-            <InputArea>
-              <FormText>내용 : </FormText>
-              <Input type="text" name="content" value={values.content} onChange={handleChange} />
-            </InputArea>
-            <InputArea>
-              <FormText>작성자 : </FormText>
-              <Input type="text" name="author" value={values.author} onChange={handleChange} />
-            </InputArea>
-            <WriteButton type="submit">제출하기</WriteButton>
-          </WriteForm>
-        </BoardContent>
-
-        <WriteButton onClick={() => navigate('/')}>게시글 확인하러 가기</WriteButton>
-      </InputContainer>
+      <WriteButton onClick={openModal}>asdasda</WriteButton>
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+        <InputContainer>
+          <WriteTitle>아래의 입력폼에 정보를 기입해주세요.</WriteTitle>
+          <BoardContent>
+            <WriteForm onSubmit={handleSubmit}>
+              <InputArea>
+                <FormText>제목 : </FormText>
+                <Input type="text" name="title" value={values.title} onChange={handleChange} />
+              </InputArea>
+              <InputArea>
+                <FormText>내용 : </FormText>
+                <Input type="text" name="content" value={values.content} onChange={handleChange} />
+              </InputArea>
+              <InputArea>
+                <FormText>작성자 : </FormText>
+                <Input type="text" name="author" value={values.author} onChange={handleChange} />
+              </InputArea>
+              <WriteButton type="submit">제출하기</WriteButton>
+            </WriteForm>
+          </BoardContent>
+          <WriteButton onClick={() => navigate('/')}>게시글 확인하러 가기</WriteButton>
+        </InputContainer>
+      </Modal>
     </WriteContainer>
   );
 }
