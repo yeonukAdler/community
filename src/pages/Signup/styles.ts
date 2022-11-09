@@ -60,7 +60,7 @@ export const InputArea = styled.div`
   height: 3rem;
   /* border: 1px solid; */
   align-items: center;
-  width: 50rem;
+  width: 60rem;
 `;
 
 export const Input = styled.input`
@@ -74,5 +74,5 @@ export const Input = styled.input`
 
 export const FormText = styled.p`
   font-size: medium;
-  width: 4rem;
+  width: 6rem;
 `;
