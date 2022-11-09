@@ -12,6 +12,7 @@ function Signup(): JSX.Element {
   const handleSubmit = (event: React.FormEvent) => {
     // event.preventDefault();
   };
+  console.log('asd');
   return (
     <div>
       <Header />
