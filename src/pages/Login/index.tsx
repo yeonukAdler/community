@@ -1,8 +1,11 @@
 import { TextColor } from './styles';
+import Header from 'component/Header';
 
-function Home(): JSX.Element {
+function Login(): JSX.Element {
   return (
     <div className="App">
+      <Header />
+
       <header className="App-header">
         <TextColor>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -15,4 +18,4 @@ function Home(): JSX.Element {
   );
 }
 
-export default Home;
+export default Login;

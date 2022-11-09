@@ -15,7 +15,6 @@ import {
 } from './styles';
 import Header from 'component/Header/index';
 import { useNavigate } from 'react-router-dom';
-// import { Write } from 'pages/Write/index';
 import Modal from 'react-modal';
 import React, { useState } from 'react';
 
