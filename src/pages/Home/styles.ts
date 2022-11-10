@@ -60,7 +60,7 @@ export const InputArea = styled.div`
   height: 3rem;
   /* border: 1px solid; */
   align-items: center;
-  width: 50rem;
+  width: 31rem;
 `;
 
 export const Input = styled.input`
@@ -68,11 +68,20 @@ export const Input = styled.input`
   border-radius: 0.25rem;
   font-weight: 400;
   margin: 0 2rem;
-  width: 80%;
+  width: 25rem;
   height: 60%;
 `;
 
 export const FormText = styled.p`
   font-size: medium;
-  width: 4rem;
+  width: 5rem;
 `;
+
+export const ModalStyles = {
+  content: {
+    top: '20%',
+    bottom: '35%',
+    left: '30%',
+    right: '30%',
+  },
+};

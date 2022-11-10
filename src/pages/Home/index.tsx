@@ -2,7 +2,6 @@ import {
   WriteTitle,
   InputContainer,
   Input,
-  WriteContainer,
   WriteForm,
   InputArea,
   FormText,
@@ -12,20 +11,12 @@ import {
   HomeContainer,
   BoardContent,
   WriteButton,
+  ModalStyles,
 } from './styles';
 import Header from 'component/Header/index';
 import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
-import React, { useEffect, useState } from 'react';
-
-const customStyles = {
-  content: {
-    top: '20%',
-    bottom: '20%',
-    left: '20%',
-    right: '20%',
-  },
-};
+import React, { useState } from 'react';
 
 function Home(): JSX.Element {
   const navigate = useNavigate();
@@ -42,10 +33,8 @@ function Home(): JSX.Element {
     const { name, value } = event.target;
     setValues({ ...values, [name]: value });
   };
-  const handleSubmit = (event: React.FormEvent) => {
-    // event.preventDefault();
-  };
 
+  // 고칠 방법 찾아야 함.
   function alert() {
     if (!window.confirm('정말 삭제하시겠습니까?')) {
       window.alert('취소하셨습니다.');
@@ -58,6 +47,7 @@ function Home(): JSX.Element {
     }
   }
 
+  // input 태그의 value에 값을 삽입하면 해당 폼에 그 값이 보임
   return (
     <HomeContainer>
       <Header />
@@ -73,14 +63,14 @@ function Home(): JSX.Element {
           <BoardText>{values.content}</BoardText>
           <BoardText>{values.author}</BoardText>
         </BoardContent>
-        <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles}>
+        <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={ModalStyles}>
           <InputContainer>
             <WriteTitle>아래의 입력폼에 정보를 기입해주세요.</WriteTitle>
             <BoardContent>
-              <WriteForm onSubmit={handleSubmit}>
+              <WriteForm>
                 <InputArea>
                   <FormText>제목 : </FormText>
-                  <Input type="text" name="title" value={values.title} onChange={handleChange} />
+                  <Input type="text" name="title" onChange={handleChange} />
                 </InputArea>
                 <InputArea>
                   <FormText>내용 : </FormText>

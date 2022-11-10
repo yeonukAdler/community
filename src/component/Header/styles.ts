@@ -12,3 +12,8 @@ export const HeaderButton = styled.button`
   height: 3rem;
   margin: 0.5%;
 `;
+export const UserNameButton = styled.button`
+  width: 10rem;
+  height: 3rem;
+  margin: 0.5%;
+`;
