@@ -12,16 +12,23 @@ export let AccountSchema = z.object({
   }),
 });
 
-export let UserSchema = z.object({
-  id: z.string(),
-  username: z.string(),
-  nickname: z.string(),
-  bio: z.string(),
-  image: z.string().nullable(),
-  url: z.string(),
-  grade: z.number(),
+export let PostSchema = z.object({
+  results: z.object({
+    id: z.number(),
+    username: z.string(),
+    nickname: z.string(),
+    created: z.string(),
+    title: z.string(),
+    content: z.string(),
+  }),
 });
-export type User = z.infer<typeof UserSchema>;
+export type Post = z.infer<typeof PostSchema>;
+
+export let PostCreateSchema = z.object({
+  title: z.string(),
+  content: z.string(),
+});
+export type PostCreate = z.infer<typeof PostCreateSchema>;
 
 export let TokenSchema = z.string();
 export type Token = z.infer<typeof TokenSchema>;

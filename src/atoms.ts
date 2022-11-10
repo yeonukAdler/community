@@ -1,11 +1,11 @@
 import { atomWithStorage } from 'jotai/utils';
 import { Token, Account } from 'apis/types';
 import { atom, Getter } from 'jotai';
-import { getTokenUser } from 'apis/index';
+import { getTokenUser, getRecentPost, getPosts } from 'apis/index';
 
+// 함수 이해 필요
 function atomWithRefresh<T>(fn: (get: Getter) => T) {
   const refreshCounter = atom(0);
-
   return atom(
     (get) => {
       get(refreshCounter);
@@ -24,4 +24,14 @@ export let userAtom = atomWithRefresh(async (get) => {
   }
   let user = await getTokenUser(token);
   return user;
+});
+
+export let getRecentPostAtom = atomWithRefresh(async () => {
+  let recentPost = await getRecentPost();
+  return recentPost;
+});
+
+export let getPostsAtom = atomWithRefresh(async () => {
+  let posts = await getPosts();
+  return posts;
 });

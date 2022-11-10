@@ -14,6 +14,28 @@ export const BoardTitle = styled.p`
   color: blue;
 `;
 
+export const BoardTable = styled.table`
+  text-align: center;
+  border: 1px solid #dddddd;
+  margin: 2rem 0;
+  width: 40rem;
+`;
+
+export const BoardTableRow = styled.tr``;
+
+export const BoardTableHead = styled.thead``;
+export const BoardTableBody = styled.tbody``;
+
+export const BoardTableText = styled.th`
+  background-color: #eeeeee;
+  text-align: center;
+`;
+
+export const BoardTableLink = styled.a`
+  background-color: #eeeeee;
+  text-align: center;
+`;
+
 export const BoardContent = styled.div`
   display: flex;
 `;
