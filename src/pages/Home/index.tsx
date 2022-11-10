@@ -16,7 +16,7 @@ import {
 import Header from 'component/Header/index';
 import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const customStyles = {
   content: {
@@ -97,9 +97,9 @@ function Home(): JSX.Element {
             </BoardContent>
           </InputContainer>
         </Modal>
-        <WriteButton onClick={openModal}>글 작성하기</WriteButton>
-        <WriteButton onClick={openModal}>글 수정하기</WriteButton>
-        <WriteButton onClick={alert}>글 삭제하기</WriteButton>
+        <WriteButton onClick={openModal}>작성하기</WriteButton>
+        <WriteButton onClick={openModal}>수정하기</WriteButton>
+        <WriteButton onClick={alert}>삭제하기</WriteButton>
       </BoardContainer>
     </HomeContainer>
   );

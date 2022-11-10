@@ -5,7 +5,6 @@ import { login } from 'apis/index';
 import { useAtom, useAtomValue } from 'jotai';
 import { tokenAtom } from 'atoms';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { string } from 'zod';
 
 function Login(): JSX.Element {
   const [values, setValues] = useState({ username: '', password: '' });
@@ -35,9 +34,10 @@ function Login(): JSX.Element {
     await moveToHome();
   }, [values.username, values.password]);
 
-  const moveToHome = useCallback(() => {
+  const moveToHome = useCallback(async () => {
+    await console.log(token);
     if (token) {
-      navigate('/');
+      await navigate('/');
     }
   }, []);
 

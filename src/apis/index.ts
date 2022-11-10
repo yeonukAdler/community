@@ -1,7 +1,7 @@
 // import { ChangeEvent } from 'react';
 // import { z, ZodError } from 'zod';
 
-import { AccountSchema, APIIssuesSchema, Token, TokenSchema } from 'apis/types';
+import { AccountSchema, APIIssuesSchema, Token, TokenSchema, UserSchema } from 'apis/types';
 
 // export class APIError extends Error {
 //   issues: APIIssues;
@@ -45,12 +45,8 @@ export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 //   });
 //   let json = await response.json();
 //   if (response.ok) {
-//     if (json.image === null) {
-//       let object = new URL('../../static/imgs/default-profile.png', import.meta.url); //TODO: 임시 - 용민
-//       json.image = object.href;
-//     }
-//     if (json.phone === null) {
-//       json.phone = '';
+//     if (json.username === null) {
+//       json. = '';
 //     }
 //     if (json.email === null) {
 //       json.email = '';
@@ -62,26 +58,6 @@ export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 //     return user;
 //   } else {
 //     let issues = APIIssuesSchema.parse(json);
-//   }
-// }
-
-// export async function getUser(username: string): Promise<User> {
-//   let response = await fetch(API_BASE_URL + `/users/${username}/`, {
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//   });
-//   let json = await response.json();
-//   if (response.ok) {
-//     if (json.image === null) {
-//       let object = new URL('../../static/imgs/default-profile.png', import.meta.url); //TODO: 임시 - 용민
-//       json.image = object.href;
-//     }
-//     let user = UserSchema.parse(json);
-//     return user;
-//   } else {
-//     let issues = APIIssuesSchema.parse(json);
-//     throw new APIError(issues);
 //   }
 // }
 
@@ -155,3 +131,50 @@ export async function login(username: string, password: string) {
     let issues = APIIssuesSchema.parse(json);
   }
 }
+
+export async function getuserInfo() {
+  const response = await fetch(API_BASE_URL + '/users/', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  let json = await response.json();
+  if (response.ok) {
+    return json.userinfo;
+  } else {
+    let issues = APIIssuesSchema.parse(json);
+  }
+}
+
+export async function getTokenUser(token: Token) {
+  let response = await fetch(API_BASE_URL + `/users/`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Token ${token}`,
+    },
+  });
+  let json = await response.json();
+  if (response.ok) {
+    json.results = json.results[0];
+    let user = AccountSchema.parse(json);
+    return user;
+  } else {
+    let issues = APIIssuesSchema.parse(json);
+  }
+}
+
+// export async function getuser(username: string) {
+//   let response = await fetch(API_BASE_URL + `/users/`, {
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//   });
+//   let json = await response.json();
+//   if (response.ok) {
+//     let user = UserSchema.parse(json);
+//     return user;
+//   } else {
+//     let issues = APIIssuesSchema.parse(json);
+//   }
+// }
