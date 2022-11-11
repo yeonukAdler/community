@@ -22,6 +22,8 @@ export let PostSchema = z.object({
     content: z.string(),
   }),
 });
+
+// export let PostsSchema = z.array(PostSchema);
 export type Post = z.infer<typeof PostSchema>;
 
 export let PostCreateSchema = z.object({
