@@ -3,7 +3,11 @@ import { Token, Account } from 'apis/types';
 import { atom, Getter } from 'jotai';
 import { getTokenUser, getRecentPost } from 'apis/index';
 
-// 함수 이해 필요
+/*
+  TODO
+
+  함수의 이해 필요
+*/
 function atomWithRefresh<T>(fn: (get: Getter) => T) {
   const refreshCounter = atom(0);
   return atom(

@@ -18,6 +18,8 @@ import { useAtom, useAtomValue } from 'jotai';
 import WritePostModal from 'component/CustomModal/WritePostModal';
 import UpdatePostModal from 'component/CustomModal/UpdatePostModal';
 import { deletePost, getPostss } from 'apis/index';
+import { BoardPage } from 'apis/board/types';
+import { getPosts } from 'apis/board';
 
 function Home(): JSX.Element {
   const navigate = useNavigate();
@@ -29,17 +31,24 @@ function Home(): JSX.Element {
   const [token, setToken] = useAtom(tokenAtom);
   const [isWritePostModal, setIsWritePostModal] = useState(false);
   const [isUpdatePostModal, setIsUpdatePostModal] = useState(false);
-
+  const [boardPage, setBoardPage] = useState<BoardPage>();
   useEffect(() => {
-    const a = getPostss(token);
-    console.log(typeof a);
-    console.log(a);
+    // Object.values<> 공부할 것
     // const map = new Map();
     // const mapWitthType = new Map<string, any[]>();
     // console.log(a);
     // const testPosts = a.map((postss: { content: any }) => postss.content);
     // console.log(testPosts);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (token) {
+      (async () => {
+        setBoardPage(await getPosts(token));
+      })();
+    }
+  }, [token]);
 
   const authUserWritePostModal = useCallback(() => {
     if (!token) {
@@ -62,19 +71,20 @@ function Home(): JSX.Element {
     } else {
       if (!window.confirm('정말 삭제하시겠습니까?')) {
         window.alert('취소하셨습니다.');
-      } else {
-        deletePost(token, recentPost?.results.id);
+      } else if (recentPost) {
+        deletePost(token, recentPost.results.id);
         window.alert('삭제하였습니다.');
         window.location.reload();
+      } else {
+        alert('포스트가 존재하지 않습니다.');
       }
     }
-  }, [token]);
+  }, [token, recentPost]);
 
   // input 태그의 value에 값을 삽입하면 해당 폼에 그 값이 보임
   return (
     <>
       <HomeContainer>
-        <Header />
         <BoardContainer>
           <BoardTitle>연욱이의 게시판</BoardTitle>
           <BoardTable>
@@ -87,22 +97,16 @@ function Home(): JSX.Element {
               </BoardTableRow>
             </BoardTableHead>
             <BoardTableBody>
-              {/* <BoardTableRow>
-                <BoardTableText>{recentPost?.results.id}</BoardTableText>
-                <BoardTableText>
-                  <BoardTableLink onClick={() => navigate('/login')}>{recentPost?.results.title}</BoardTableLink>
-                </BoardTableText>
-                <BoardTableText>{date}</BoardTableText>
-                <BoardTableText>{recentPost?.results.nickname}</BoardTableText>
-              </BoardTableRow> */}
-              <BoardTableRow>
-                <BoardTableText>{recentPost?.results.id}</BoardTableText>
-                <BoardTableText>
-                  <BoardTableLink onClick={() => navigate('/login')}>{recentPost?.results.title}</BoardTableLink>
-                </BoardTableText>
-                <BoardTableText>{date}</BoardTableText>
-                <BoardTableText>{recentPost?.results.nickname}</BoardTableText>
-              </BoardTableRow>
+              {boardPage?.boards.map((board, boardIndex) => (
+                <BoardTableRow key={boardIndex}>
+                  <BoardTableText>{board.id}</BoardTableText>
+                  <BoardTableText>
+                    <BoardTableLink onClick={() => navigate('/login')}>{board.title}</BoardTableLink>
+                  </BoardTableText>
+                  <BoardTableText>{board.created.substring(0, 4)}</BoardTableText>
+                  <BoardTableText>{board.nickname}</BoardTableText>
+                </BoardTableRow>
+              ))}
             </BoardTableBody>
           </BoardTable>
           <WriteButton onClick={authUserWritePostModal}>작성하기</WriteButton>

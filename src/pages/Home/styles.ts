@@ -57,10 +57,6 @@ export const WriteContainer = styled.div`
   flex-direction: column;
 `;
 
-export const InputContainer = styled.div`
-  padding: 0 10%;
-`;
-
 export const WriteTitle = styled.p`
   font-size: 2rem;
   color: blue;
@@ -91,7 +87,6 @@ export const Input = styled.input`
   font-weight: 400;
   margin: 0 2rem;
   width: 25rem;
-  height: 60%;
 `;
 
 export const FormText = styled.p`

@@ -5,11 +5,13 @@ import Login from 'pages/Login/index';
 import Signup from 'pages/Signup/index';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Suspense } from 'react';
+import Header from 'component/Header';
 
 function App() {
   return (
     <>
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />

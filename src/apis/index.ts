@@ -25,7 +25,7 @@ export async function register(username: string, nickname: string, password: str
       email,
     }),
   });
-  console.log(response);
+
   let json = await response.json();
 
   if (response.ok) {
@@ -77,7 +77,7 @@ export async function getTokenUser(token: Token) {
   }
 }
 
-export async function getPostss(token: Token | undefined) {
+export async function getPostss(token: Token) {
   let response = await fetch(API_BASE_URL + `/posts/`, {
     headers: {
       'Content-Type': 'application/json',
@@ -88,6 +88,7 @@ export async function getPostss(token: Token | undefined) {
   if (response.ok) {
     // let tssposts = tssPostchema.parse(json.results);
     // console.log('asd' + tssposts);
+    console.log(json);
     const tssposts = json.results;
 
     return tssposts;
@@ -160,7 +161,7 @@ export async function updatePost(
   }
 }
 
-export async function deletePost(token: Token | undefined, postId: Number | undefined) {
+export async function deletePost(token: Token, postId: number) {
   let response = await fetch(API_BASE_URL + `/posts/${postId}`, {
     method: 'DELETE',
     headers: {

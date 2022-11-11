@@ -38,7 +38,6 @@ function Login(): JSX.Element {
 
   return (
     <div>
-      <Header />
       <InputContainer>
         <WriteTitle>로그인</WriteTitle>
         <BoardContent>
