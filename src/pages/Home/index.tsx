@@ -17,7 +17,7 @@ import { getRecentPostAtom, tokenAtom, userAtom } from 'atoms';
 import { useAtom, useAtomValue } from 'jotai';
 import WritePostModal from 'component/CustomModal/WritePostModal';
 import UpdatePostModal from 'component/CustomModal/UpdatePostModal';
-import { deletePost } from 'apis/index';
+import { deletePost, getPostss } from 'apis/index';
 
 function Home(): JSX.Element {
   const navigate = useNavigate();
@@ -30,10 +30,16 @@ function Home(): JSX.Element {
   const [isWritePostModal, setIsWritePostModal] = useState(false);
   const [isUpdatePostModal, setIsUpdatePostModal] = useState(false);
 
-  // useEffect(() => {
-  //   const a = getPostss();
-  //   console.log(a);
-  // }, []);
+  useEffect(() => {
+    const a = getPostss(token);
+    console.log(typeof a);
+    console.log(a);
+    // const map = new Map();
+    // const mapWitthType = new Map<string, any[]>();
+    // console.log(a);
+    // const testPosts = a.map((postss: { content: any }) => postss.content);
+    // console.log(testPosts);
+  }, []);
 
   const authUserWritePostModal = useCallback(() => {
     if (!token) {
@@ -81,6 +87,14 @@ function Home(): JSX.Element {
               </BoardTableRow>
             </BoardTableHead>
             <BoardTableBody>
+              {/* <BoardTableRow>
+                <BoardTableText>{recentPost?.results.id}</BoardTableText>
+                <BoardTableText>
+                  <BoardTableLink onClick={() => navigate('/login')}>{recentPost?.results.title}</BoardTableLink>
+                </BoardTableText>
+                <BoardTableText>{date}</BoardTableText>
+                <BoardTableText>{recentPost?.results.nickname}</BoardTableText>
+              </BoardTableRow> */}
               <BoardTableRow>
                 <BoardTableText>{recentPost?.results.id}</BoardTableText>
                 <BoardTableText>

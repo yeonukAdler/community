@@ -23,7 +23,14 @@ export let PostSchema = z.object({
   }),
 });
 
-// export let PostsSchema = z.array(PostSchema);
+// Promise란 무엇인가 공부 필요함.
+export let tssPostchema = z.object({
+  next: z.string(),
+  previous: z.string(),
+  count: z.number(),
+  results: z.array(PostSchema),
+});
+
 export type Post = z.infer<typeof PostSchema>;
 
 export let PostCreateSchema = z.object({

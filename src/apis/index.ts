@@ -7,6 +7,7 @@ import {
   Post,
   PostCreate,
   PostCreateSchema,
+  tssPostchema,
 } from 'apis/types';
 
 export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
@@ -76,40 +77,26 @@ export async function getTokenUser(token: Token) {
   }
 }
 
-export async function getPosts() {
+export async function getPostss(token: Token | undefined) {
   let response = await fetch(API_BASE_URL + `/posts/`, {
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Token ${token}`,
     },
   });
   let json = await response.json();
   if (response.ok) {
-    json.results = json.results[0]; //이거 타입 안맞아서 못하는 중
-    console.log(json.results);
-    let posts = PostSchema.parse(json);
-    return posts;
+    // let tssposts = tssPostchema.parse(json.results);
+    // console.log('asd' + tssposts);
+    const tssposts = json.results;
+
+    return tssposts;
+    // return ;
   } else {
     let issues = APIIssuesSchema.parse(json);
+    return issues;
   }
 }
-
-// export async function getPostss() {
-//   let response = await fetch(API_BASE_URL + `/posts/`, {
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//   });
-//   let json = await response.json();
-//   if (response.ok) {
-//     //이거 타입 안맞아서 못하는 중
-//     console.log(json.results);
-//     // let posts = PostsSchema.parse(json.results);
-//     return true;
-//   } else {
-//     let issues = APIIssuesSchema.parse(json);
-//     return issues;
-//   }
-// }
 
 export async function getRecentPost() {
   let response = await fetch(API_BASE_URL + `/posts/`, {
