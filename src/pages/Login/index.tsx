@@ -5,6 +5,7 @@ import { login } from 'apis/index';
 import { useAtom } from 'jotai';
 import { tokenAtom } from 'atoms';
 import { useNavigate } from 'react-router-dom';
+import { Path } from 'constant';
 
 function Login(): JSX.Element {
   const [values, setValues] = useState({ username: '', password: '' });
@@ -24,7 +25,7 @@ function Login(): JSX.Element {
         const userToken = await login(username, password);
         setToken(userToken);
         alert('로그인 성공');
-        navigate('/');
+        navigate(`${Path.home}`);
 
         // 아래 코드로 토큰 값에 대해서 검증하려고 할 시, token 값이 undefined 가 나옴. 왜 그런지 이유 물어볼 것
         // if (token) {

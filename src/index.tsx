@@ -6,16 +6,16 @@ import Signup from 'pages/Signup/index';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Suspense } from 'react';
 import Header from 'component/Header';
-
+import { Path } from 'constant';
 function App() {
   return (
     <>
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<Signup />} />
+          <Route path={Path.home} element={<Home />} />
+          <Route path={Path.logIn} element={<Login />} />
+          <Route path={Path.signUp} element={<Signup />} />
         </Routes>
       </BrowserRouter>
     </>

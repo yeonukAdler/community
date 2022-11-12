@@ -1,8 +1,8 @@
 // 추후 변경할 것
 export const Path = {
   home: '/',
-  signUp: '/sign-up',
-  signIn: '/sign-in',
+  signUp: '/signup',
+  logIn: '/login',
 } as const;
 
 // type PathType = keyof typeof Path;

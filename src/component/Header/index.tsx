@@ -24,8 +24,8 @@ function Header(): JSX.Element {
         </>
       ) : (
         <>
-          <HeaderButton onClick={() => navigate('/login')}>로그인</HeaderButton>
-          <HeaderButton onClick={() => navigate('/signup')}>회원가입</HeaderButton>
+          <HeaderButton onClick={() => navigate(`${Path.logIn}`)}>로그인</HeaderButton>
+          <HeaderButton onClick={() => navigate(`${Path.signUp}`)}>회원가입</HeaderButton>
         </>
       )}
     </HeaderContainer>

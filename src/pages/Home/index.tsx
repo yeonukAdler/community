@@ -20,6 +20,7 @@ import UpdatePostModal from 'component/CustomModal/UpdatePostModal';
 import { deletePost, getPostss } from 'apis/index';
 import { BoardPage } from 'apis/board/types';
 import { getPosts } from 'apis/board';
+import { Path } from 'constant';
 
 function Home(): JSX.Element {
   const navigate = useNavigate();
@@ -101,7 +102,7 @@ function Home(): JSX.Element {
                 <BoardTableRow key={boardIndex}>
                   <BoardTableText>{board.id}</BoardTableText>
                   <BoardTableText>
-                    <BoardTableLink onClick={() => navigate('/login')}>{board.title}</BoardTableLink>
+                    <BoardTableLink onClick={() => navigate(`${Path.logIn}`)}>{board.title}</BoardTableLink>
                   </BoardTableText>
                   <BoardTableText>{board.created.substring(0, 4)}</BoardTableText>
                   <BoardTableText>{board.nickname}</BoardTableText>

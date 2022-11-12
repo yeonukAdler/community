@@ -5,6 +5,7 @@ import { register } from 'apis/index';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { tokenAtom } from 'atoms';
+import { Path } from 'constant';
 
 function Signup(): JSX.Element {
   const [values, setValues] = useState({ username: '', nickname: '', password: '', email: '' });
@@ -25,7 +26,7 @@ function Signup(): JSX.Element {
       const userToken = await register(username, nickname, password, email);
       setToken(userToken);
       alert('회원가입 성공');
-      navigate('/');
+      navigate(`${Path.home}`);
     } catch (error) {
       window.alert('실패했습니다.');
     }
@@ -33,7 +34,6 @@ function Signup(): JSX.Element {
 
   return (
     <div>
-      <Header />
       <InputContainer>
         <WriteTitle>회원가입</WriteTitle>
         <BoardContent>
