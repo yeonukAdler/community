@@ -18,7 +18,7 @@ import { useAtom, useAtomValue } from 'jotai';
 import WritePostModal from 'component/CustomModal/WritePostModal';
 import UpdatePostModal from 'component/CustomModal/UpdatePostModal';
 import { deletePost, getPostss } from 'apis/index';
-import { BoardPage } from 'apis/board/types';
+import { BoardResponse } from 'apis/board/types';
 import { getPosts } from 'apis/board';
 import { Path } from 'constant';
 
@@ -32,7 +32,7 @@ function Home(): JSX.Element {
   const [token, setToken] = useAtom(tokenAtom);
   const [isWritePostModal, setIsWritePostModal] = useState(false);
   const [isUpdatePostModal, setIsUpdatePostModal] = useState(false);
-  const [boardPage, setBoardPage] = useState<BoardPage>();
+  const [boardPage, setBoardPage] = useState<BoardResponse>();
   useEffect(() => {
     // Object.values<> 공부할 것
     // const map = new Map();
@@ -98,7 +98,7 @@ function Home(): JSX.Element {
               </BoardTableRow>
             </BoardTableHead>
             <BoardTableBody>
-              {boardPage?.boards.map((board, boardIndex) => (
+              {boardPage?.results.map((board, boardIndex) => (
                 <BoardTableRow key={boardIndex}>
                   <BoardTableText>{board.id}</BoardTableText>
                   <BoardTableText>
