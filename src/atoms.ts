@@ -1,7 +1,7 @@
 import { atomWithStorage } from 'jotai/utils';
-import { Token, Account } from 'apis/types';
+import { Token } from 'apis/types';
 import { atom, Getter } from 'jotai';
-import { getTokenUser, getRecentPost } from 'apis/index';
+import { getTokenUser } from 'apis/index';
 
 /*
   TODO
@@ -28,9 +28,4 @@ export let userAtom = atomWithRefresh(async (get) => {
   }
   let user = await getTokenUser(token);
   return user;
-});
-
-export let getRecentPostAtom = atomWithRefresh(async () => {
-  let recentPost = await getRecentPost();
-  return recentPost;
 });

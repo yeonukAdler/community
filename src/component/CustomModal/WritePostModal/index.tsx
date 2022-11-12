@@ -11,7 +11,7 @@ import {
 } from './styles';
 import Modal from 'react-modal';
 import React, { useCallback, useEffect, useState } from 'react';
-import { getRecentPostAtom, tokenAtom, userAtom } from 'atoms';
+import { tokenAtom, userAtom } from 'atoms';
 import { useAtom, useAtomValue } from 'jotai';
 import { writePost } from 'apis/index';
 
