@@ -1,9 +1,9 @@
 import { z } from 'zod';
-export let APIIssuesSchema = z.object({ code: z.number(), detail: z.string(), field: z.string() });
+export const APIIssuesSchema = z.object({ code: z.number(), detail: z.string(), field: z.string() });
 export type APIIssues = z.infer<typeof APIIssuesSchema>;
 
 export type Account = z.infer<typeof AccountSchema>;
-export let AccountSchema = z.object({
+export const AccountSchema = z.object({
   results: z.object({
     id: z.string(),
     username: z.string(),
@@ -12,7 +12,7 @@ export let AccountSchema = z.object({
   }),
 });
 
-export let PostSchema = z.object({
+export const PostSchema = z.object({
   results: z.object({
     id: z.number(),
     username: z.string(),
@@ -25,11 +25,11 @@ export let PostSchema = z.object({
 
 export type Post = z.infer<typeof PostSchema>;
 
-export let PostCreateSchema = z.object({
+export const PostCreateSchema = z.object({
   title: z.string(),
   content: z.string(),
 });
 export type PostCreate = z.infer<typeof PostCreateSchema>;
 
-export let TokenSchema = z.string();
+export const TokenSchema = z.string();
 export type Token = z.infer<typeof TokenSchema>;

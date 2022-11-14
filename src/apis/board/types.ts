@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export let APIIssuesSchema = z.object({ code: z.number(), detail: z.string(), field: z.string() });
+export const APIIssuesSchema = z.object({ code: z.number(), detail: z.string(), field: z.string() });
 export type APIIssues = z.infer<typeof APIIssuesSchema>;
 
 const BoardResultsSchema = z.object({

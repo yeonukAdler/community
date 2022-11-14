@@ -19,13 +19,13 @@ function atomWithRefresh<T>(fn: (get: Getter) => T) {
   );
 }
 
-export let tokenAtom = atomWithStorage<Token | undefined>('token', '');
+export const tokenAtom = atomWithStorage<Token | undefined>('token', '');
 
-export let userAtom = atomWithRefresh(async (get) => {
-  let token = get(tokenAtom);
+export const userAtom = atomWithRefresh(async (get) => {
+  const token = get(tokenAtom);
   if (!token) {
     return null;
   }
-  let user = await getTokenUser(token);
+  const user = await getTokenUser(token);
   return user;
 });
