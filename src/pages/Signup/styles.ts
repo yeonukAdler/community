@@ -5,10 +5,6 @@ export const HomeContainer = styled.div`
   flex-direction: column;
 `;
 
-export const BoardContainer = styled.div`
-  padding: 0 10%;
-`;
-
 export const BoardTitle = styled.p`
   font-size: 2rem;
   color: blue;
@@ -16,6 +12,7 @@ export const BoardTitle = styled.p`
 
 export const BoardContent = styled.div`
   display: flex;
+  flex-direction: column;
 `;
 
 export const BoardText = styled.p`
@@ -36,7 +33,13 @@ export const WriteContainer = styled.div`
 `;
 
 export const InputContainer = styled.div`
-  padding: 0 10%;
+  display: flex;
+  justify-content: center;
+`;
+
+export const SignupContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const WriteTitle = styled.p`

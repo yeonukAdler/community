@@ -30,9 +30,3 @@ export async function getPosts(token: Token): Promise<BoardResponse> {
     throw new APIError(issues);
   }
 }
-
-/*
-  TODO:
-
-  Promise 적용하기
-*/

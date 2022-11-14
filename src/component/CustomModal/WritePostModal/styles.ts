@@ -6,7 +6,8 @@ export const HomeContainer = styled.div`
 `;
 
 export const BoardContainer = styled.div`
-  padding: 0 10%;
+  display: flex;
+  justify-content: center;
 `;
 
 export const BoardTitle = styled.p`
@@ -38,6 +39,7 @@ export const BoardTableLink = styled.a`
 
 export const BoardContent = styled.div`
   display: flex;
+  flex-direction: column;
 `;
 
 export const BoardText = styled.p`
@@ -55,10 +57,6 @@ export const WriteButton = styled.button`
 export const WriteContainer = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-export const InputContainer = styled.div`
-  padding: 0 10%;
 `;
 
 export const WriteTitle = styled.p`

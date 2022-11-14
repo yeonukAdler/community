@@ -1,4 +1,14 @@
-import { BoardContent, FormText, Input, InputArea, InputContainer, WriteButton, WriteForm, WriteTitle } from './styles';
+import {
+  BoardContent,
+  SignupContainer,
+  FormText,
+  Input,
+  InputArea,
+  InputContainer,
+  WriteButton,
+  WriteForm,
+  WriteTitle,
+} from './styles';
 import Header from 'component/Header';
 import React, { useState, useCallback } from 'react';
 import { register } from 'apis/index';
@@ -33,8 +43,8 @@ function Signup(): JSX.Element {
   }, [values.username, values.nickname, values.password, values.email]);
 
   return (
-    <div>
-      <InputContainer>
+    <InputContainer>
+      <SignupContainer>
         <WriteTitle>회원가입</WriteTitle>
         <BoardContent>
           <WriteForm>
@@ -59,8 +69,8 @@ function Signup(): JSX.Element {
             </WriteButton>
           </WriteForm>
         </BoardContent>
-      </InputContainer>
-    </div>
+      </SignupContainer>
+    </InputContainer>
   );
 }
 

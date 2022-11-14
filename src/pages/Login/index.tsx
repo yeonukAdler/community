@@ -1,4 +1,4 @@
-import { BoardContent, FormText, Input, InputArea, InputContainer, WriteButton, WriteForm, WriteTitle } from './styles';
+import { InputContainer, BoardContent, FormText, Input, InputArea, WriteButton, WriteForm, WriteTitle } from './styles';
 import Header from 'component/Header';
 import React, { useState, useCallback, useEffect } from 'react';
 import { login } from 'apis/index';
@@ -38,26 +38,25 @@ function Login(): JSX.Element {
   }, [values.username, values.password]);
 
   return (
-    <div>
-      <InputContainer>
+    <InputContainer>
+      <BoardContent>
         <WriteTitle>로그인</WriteTitle>
-        <BoardContent>
-          <WriteForm>
-            <InputArea>
-              <FormText>username : </FormText>
-              <Input name="username" placeholder="yeonuk44" onChange={handleChange} />
-            </InputArea>
-            <InputArea>
-              <FormText>password : </FormText>
-              <Input name="password" placeholder="asdASD1234!@#$" onChange={handleChange} />
-            </InputArea>
-            <WriteButton type="button" onClick={onLoginButtonClick}>
-              제출하기
-            </WriteButton>
-          </WriteForm>
-        </BoardContent>
-      </InputContainer>
-    </div>
+
+        <WriteForm>
+          <InputArea>
+            <FormText>username : </FormText>
+            <Input name="username" placeholder="yeonuk44" onChange={handleChange} />
+          </InputArea>
+          <InputArea>
+            <FormText>password : </FormText>
+            <Input name="password" placeholder="asdASD1234!@#$" onChange={handleChange} />
+          </InputArea>
+          <WriteButton type="button" onClick={onLoginButtonClick}>
+            제출하기
+          </WriteButton>
+        </WriteForm>
+      </BoardContent>
+    </InputContainer>
   );
 }
 

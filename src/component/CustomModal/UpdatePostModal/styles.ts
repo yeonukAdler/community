@@ -5,10 +5,6 @@ export const HomeContainer = styled.div`
   flex-direction: column;
 `;
 
-export const BoardContainer = styled.div`
-  padding: 0 10%;
-`;
-
 export const BoardTitle = styled.p`
   font-size: 2rem;
   color: blue;
@@ -19,6 +15,11 @@ export const BoardTable = styled.table`
   border: 1px solid #dddddd;
   margin: 2rem 0;
   width: 40rem;
+`;
+
+export const BoardContainer = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 export const BoardTableRow = styled.tr``;
@@ -38,6 +39,7 @@ export const BoardTableLink = styled.a`
 
 export const BoardContent = styled.div`
   display: flex;
+  flex-direction: column;
 `;
 
 export const BoardText = styled.p`
@@ -55,10 +57,6 @@ export const WriteButton = styled.button`
 export const WriteContainer = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-export const InputContainer = styled.div`
-  padding: 0 10%;
 `;
 
 export const WriteTitle = styled.p`

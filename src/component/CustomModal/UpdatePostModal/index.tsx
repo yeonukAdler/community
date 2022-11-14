@@ -1,6 +1,6 @@
 import {
+  BoardContainer,
   WriteTitle,
-  InputContainer,
   Input,
   WriteForm,
   InputArea,
@@ -62,28 +62,27 @@ function UpdatePostModal(): JSX.Element {
   }, []);
 
   return (
-    <>
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={ModalStyles}>
-        <InputContainer>
+    <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={ModalStyles}>
+      <BoardContainer>
+        <BoardContent>
           <WriteTitle>가장 최신의 포스트 수정하기</WriteTitle>
-          <BoardContent>
-            <WriteForm>
-              <InputArea>
-                <FormText>제목 : </FormText>
-                <Input type="text" name="title" onChange={handleChange} />
-              </InputArea>
-              <InputArea>
-                <FormText>내용 : </FormText>
-                <Input type="text" name="content" onChange={handleChange} />
-              </InputArea>
-              <WriteButton type="button" onClick={onUpdateButtonClick}>
-                제출하기
-              </WriteButton>
-            </WriteForm>
-          </BoardContent>
-        </InputContainer>
-      </Modal>
-    </>
+
+          <WriteForm>
+            <InputArea>
+              <FormText>제목 : </FormText>
+              <Input type="text" name="title" onChange={handleChange} />
+            </InputArea>
+            <InputArea>
+              <FormText>내용 : </FormText>
+              <Input type="text" name="content" onChange={handleChange} />
+            </InputArea>
+            <WriteButton type="button" onClick={onUpdateButtonClick}>
+              제출하기
+            </WriteButton>
+          </WriteForm>
+        </BoardContent>
+      </BoardContainer>
+    </Modal>
   );
 }
 

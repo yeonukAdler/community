@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 export const HomeContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
 `;
 
 export const BoardContainer = styled.div`
-  padding: 0 10%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const BoardTitle = styled.p`
@@ -19,6 +20,11 @@ export const BoardTable = styled.table`
   border: 1px solid #dddddd;
   margin: 2rem 0;
   width: 40rem;
+`;
+
+export const BoardTextContainer = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 
 export const BoardTableRow = styled.tr``;

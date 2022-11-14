@@ -1,7 +1,7 @@
 import {
+  HomeContainer,
   BoardTitle,
   BoardContainer,
-  HomeContainer,
   WriteButton,
   BoardTable,
   BoardTableRow,
@@ -9,6 +9,7 @@ import {
   BoardTableBody,
   BoardTableHead,
   BoardTableLink,
+  BoardTextContainer,
 } from './styles';
 import Header from 'component/Header/index';
 import { useNavigate } from 'react-router-dom';
@@ -73,40 +74,40 @@ function Home(): JSX.Element {
 
   // input 태그의 value에 값을 삽입하면 해당 폼에 그 값이 보임
   return (
-    <>
-      <HomeContainer>
-        <BoardContainer>
-          <BoardTitle>연욱이의 게시판</BoardTitle>
-          <BoardTable>
-            <BoardTableHead>
-              <BoardTableRow>
-                <BoardTableText>번호</BoardTableText>
-                <BoardTableText>제목</BoardTableText>
-                <BoardTableText>게시일</BoardTableText>
-                <BoardTableText>작성자</BoardTableText>
+    <HomeContainer>
+      <BoardContainer>
+        <BoardTitle>연욱이의 게시판</BoardTitle>
+        <BoardTable>
+          <BoardTableHead>
+            <BoardTableRow>
+              <BoardTableText>번호</BoardTableText>
+              <BoardTableText>제목</BoardTableText>
+              <BoardTableText>게시일</BoardTableText>
+              <BoardTableText>작성자</BoardTableText>
+            </BoardTableRow>
+          </BoardTableHead>
+          <BoardTableBody>
+            {boardPage?.results.map((board, boardIndex) => (
+              <BoardTableRow key={boardIndex}>
+                <BoardTableText>{board.id}</BoardTableText>
+                <BoardTableText>
+                  <BoardTableLink onClick={() => navigate(`${Path.logIn}`)}>{board.title}</BoardTableLink>
+                </BoardTableText>
+                <BoardTableText>{board.created.match(regex)}</BoardTableText>
+                <BoardTableText>{board.nickname}</BoardTableText>
               </BoardTableRow>
-            </BoardTableHead>
-            <BoardTableBody>
-              {boardPage?.results.map((board, boardIndex) => (
-                <BoardTableRow key={boardIndex}>
-                  <BoardTableText>{board.id}</BoardTableText>
-                  <BoardTableText>
-                    <BoardTableLink onClick={() => navigate(`${Path.logIn}`)}>{board.title}</BoardTableLink>
-                  </BoardTableText>
-                  <BoardTableText>{board.created.match(regex)}</BoardTableText>
-                  <BoardTableText>{board.nickname}</BoardTableText>
-                </BoardTableRow>
-              ))}
-            </BoardTableBody>
-          </BoardTable>
+            ))}
+          </BoardTableBody>
+        </BoardTable>
+        <BoardTextContainer>
           <WriteButton onClick={authUserWritePostModal}>작성하기</WriteButton>
           <WriteButton onClick={authUserUpdatePostModal}>수정하기</WriteButton>
           <WriteButton onClick={authUserDeletePost}>삭제하기</WriteButton>
-        </BoardContainer>
-      </HomeContainer>
+        </BoardTextContainer>
+      </BoardContainer>
       {isWritePostModal && <WritePostModal />}
       {isUpdatePostModal && <UpdatePostModal />}
-    </>
+    </HomeContainer>
   );
 }
 
