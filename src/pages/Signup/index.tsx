@@ -8,8 +8,9 @@ import {
   WriteButton,
   WriteForm,
   WriteTitle,
+  SamePW,
+  DifferntPW,
 } from './styles';
-import Header from 'component/Header';
 import React, { useState, useCallback } from 'react';
 import { register } from 'apis/index';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -18,9 +19,10 @@ import { tokenAtom } from 'atoms';
 import { Path } from 'constant';
 
 function Signup(): JSX.Element {
-  const [values, setValues] = useState({ username: '', nickname: '', password: '', email: '' });
+  const [values, setValues] = useState({ username: '', nickname: '', password: '', email: '', checkPW: '' });
   const navigate = useNavigate();
   const [token, setToken] = useAtom(tokenAtom);
+  const [activeSignUp, setActiveSignUp] = useState<boolean>(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -33,14 +35,27 @@ function Signup(): JSX.Element {
       const nickname = values.nickname;
       const password = values.password;
       const email = values.email;
-      const userToken = await register(username, nickname, password, email);
-      setToken(userToken);
-      alert('회원가입 성공');
-      navigate(`${Path.home}`);
+      activeSignup();
+      if (activeSignUp === true) {
+        const userToken = await register(username, nickname, password, email);
+        setToken(userToken);
+        alert('회원가입 성공');
+        navigate(`${Path.home}`);
+      } else {
+        alert('비밀번호가 다릅니다. 확인바랍니다.');
+      }
     } catch (error) {
       window.alert('실패했습니다.');
     }
   }, [values.username, values.nickname, values.password, values.email]);
+
+  const activeSignup = () => {
+    if (values.password === values.checkPW) {
+      return setActiveSignUp(true);
+    } else {
+      return setActiveSignUp(false);
+    }
+  };
 
   return (
     <InputContainer>
@@ -58,8 +73,20 @@ function Signup(): JSX.Element {
             </InputArea>
             <InputArea>
               <FormText>password : </FormText>
-              <Input name="password" placeholder="asdASD1234!@#$" onChange={handleChange} />
+              <Input
+                type="password"
+                id="originPW"
+                name="password"
+                placeholder="asdASD1234!@#$"
+                onChange={handleChange}
+              />
             </InputArea>
+            <InputArea>
+              <FormText>password check : </FormText>
+              <Input type="password" id="checkPW" name="checkPW" placeholder="asdASD1234!@#$" onChange={handleChange} />
+              {values.checkPW === values.password ? <SamePW>일치</SamePW> : <DifferntPW>불일치</DifferntPW>}
+            </InputArea>
+
             <InputArea>
               <FormText>email : </FormText>
               <Input name="email" placeholder="yeonuk@adler.com" onChange={handleChange} />

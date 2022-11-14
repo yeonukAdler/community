@@ -60,10 +60,18 @@ export const WriteForm = styled.form`
 
 export const InputArea = styled.div`
   display: flex;
-  height: 3rem;
   /* border: 1px solid; */
   align-items: center;
-  width: 60rem;
+  width: 80rem;
+  justify-content: start;
+`;
+
+export const PasswordCheckArea = styled.div`
+  display: flex;
+  /* border: 1px solid; */
+  align-items: center;
+  width: 80rem;
+  justify-content: start;
 `;
 
 export const Input = styled.input`
@@ -71,11 +79,19 @@ export const Input = styled.input`
   border-radius: 0.25rem;
   font-weight: 400;
   margin: 0 2rem;
-  width: 80%;
-  height: 60%;
+  width: 15rem;
+  height: 2rem;
+`;
+
+export const SamePW = styled.p`
+  color: blue;
+`;
+
+export const DifferntPW = styled.p`
+  color: red;
 `;
 
 export const FormText = styled.p`
   font-size: medium;
-  width: 6rem;
+  width: 10rem;
 `;
