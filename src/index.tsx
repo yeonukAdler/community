@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Suspense } from 'react';
 import Header from 'component/Header';
 import { Path } from 'constant';
+import ReactModal from 'react-modal';
 function App() {
   return (
     <>
@@ -21,6 +22,10 @@ function App() {
     </>
   );
 }
+
+const modalRoot = document.getElementById('modal-root');
+
+ReactModal.setAppElement(modalRoot as HTMLElement);
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(

@@ -4,7 +4,3 @@ export const Path = {
   signUp: '/signup',
   logIn: '/login',
 } as const;
-
-// type PathType = keyof typeof Path;
-
-// type HeaderPathType = Omit<PathType, 'home'>;

@@ -68,6 +68,7 @@ export const WriteText = styled.p`
   font-size: 1rem;
   color: red;
   padding-right: 0.5rem;
+  border: 1px solid;
 `;
 
 export const WriteForm = styled.form`
@@ -80,7 +81,7 @@ export const InputArea = styled.div`
   height: 3rem;
   /* border: 1px solid; */
   align-items: center;
-  width: 31rem;
+  width: 50rem;
 `;
 
 export const Input = styled.input`
@@ -94,14 +95,14 @@ export const Input = styled.input`
 
 export const FormText = styled.p`
   font-size: medium;
-  width: 5rem;
+  width: 10rem;
 `;
 
 export const ModalStyles = {
   content: {
     top: '20%',
     bottom: '35%',
-    left: '30%',
-    right: '30%',
+    left: '25%',
+    right: '25%',
   },
 };

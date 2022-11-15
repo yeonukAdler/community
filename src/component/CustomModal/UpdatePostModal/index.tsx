@@ -18,7 +18,7 @@ import { BoardResponse } from 'apis/board/types';
 import { getPosts } from 'apis/board';
 
 function UpdatePostModal(): JSX.Element {
-  const [values, setValues] = useState({ title: '', content: '' });
+  const [values, setValues] = useState({ id: '', title: '', content: '' });
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [token, setToken] = useAtom(tokenAtom);
   const [boardPage, setBoardPage] = useState<BoardResponse>();
@@ -43,11 +43,11 @@ function UpdatePostModal(): JSX.Element {
   };
 
   const onUpdateButtonClick = useCallback(async () => {
+    const id = Number(values.id);
+    const title = values.title;
+    const content = values.content;
     try {
-      if (values.title && values.content) {
-        const id = boardPage?.results[0].id;
-        const title = values.title;
-        const content = values.content;
+      if (title && content && id) {
         await updatePost(token, id, title, content);
         closeModal();
         window.location.reload();
@@ -55,7 +55,7 @@ function UpdatePostModal(): JSX.Element {
     } catch (error) {
       window.alert(error);
     }
-  }, [values.title, values.content, token, boardPage?.results[0].id]);
+  }, [token, values]);
 
   useEffect(() => {
     openModal();
@@ -68,6 +68,10 @@ function UpdatePostModal(): JSX.Element {
           <WriteTitle>가장 최신의 포스트 수정하기</WriteTitle>
 
           <WriteForm>
+            <InputArea>
+              <FormText>아이디 : </FormText>
+              <Input type="text" name="id" onChange={handleChange} />
+            </InputArea>
             <InputArea>
               <FormText>제목 : </FormText>
               <Input type="text" name="title" onChange={handleChange} />
