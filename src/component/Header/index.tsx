@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { tokenAtom, userAtom } from 'atoms';
 import { useAtom, useAtomValue } from 'jotai';
 import { Path } from 'constant';
+import { findAllByAltText } from '@testing-library/react';
 
 function Header(): JSX.Element {
   const navigate = useNavigate();
@@ -14,12 +15,14 @@ function Header(): JSX.Element {
     window.location.reload();
   };
 
+  console.info(user?.results[0].username);
+
   return (
     <HeaderContainer>
       <HeaderButton onClick={() => navigate(`${Path.home}`)}>게시판</HeaderButton>
       {userToken ? (
         <>
-          <UserNameButton>{user?.results.username}</UserNameButton>
+          <UserNameButton>{user?.results[0].username}</UserNameButton>
           <HeaderButton onClick={headerlogOutButton}>로그아웃</HeaderButton>
         </>
       ) : (

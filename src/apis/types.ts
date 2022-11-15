@@ -2,15 +2,20 @@ import { z } from 'zod';
 export const APIIssuesSchema = z.object({ code: z.number(), detail: z.string(), field: z.string() });
 export type APIIssues = z.infer<typeof APIIssuesSchema>;
 
-export type Account = z.infer<typeof AccountSchema>;
-export const AccountSchema = z.object({
-  results: z.object({
-    id: z.string(),
-    username: z.string(),
-    nickname: z.string(),
-    email: z.optional(z.string()),
-  }),
+const AccountResultsSchema = z.object({
+  id: z.string(),
+  username: z.string(),
+  nickname: z.string(),
+  email: z.optional(z.string()),
 });
+export const AccountResponseSchema = z.object({
+  next: z.string().nullable(),
+  previous: z.string().nullable(),
+  count: z.number(),
+  results: z.array(AccountResultsSchema),
+});
+
+export type Account = z.infer<typeof AccountResponseSchema>;
 
 export const PostSchema = z.object({
   results: z.object({

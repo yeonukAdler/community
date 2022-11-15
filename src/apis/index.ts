@@ -1,4 +1,4 @@
-import { AccountSchema, APIIssuesSchema, Token, TokenSchema, Account } from 'apis/types';
+import { AccountResponseSchema, APIIssuesSchema, Token, TokenSchema, Account } from 'apis/types';
 
 export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
@@ -57,11 +57,13 @@ export async function getTokenUser(token: Token): Promise<Account> {
       Authorization: `Token ${token}`,
     },
   });
-  const json = await response.json();
+
+  const json = (await response.json()) as Account;
+
   if (response.ok) {
-    json.results = json.results[0];
+    // json.results = json.results[0];
     // 최근에 생성된 토큰을 소지한 유저 정보를 가져옴
-    const user = AccountSchema.parse(json);
+    const user = AccountResponseSchema.parse(json);
     return user;
   } else {
     const issues = APIIssuesSchema.parse(json);

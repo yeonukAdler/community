@@ -49,7 +49,7 @@ function Login(): JSX.Element {
           </InputArea>
           <InputArea>
             <FormText>password : </FormText>
-            <Input name="password" placeholder="asdASD1234!@#$" onChange={handleChange} />
+            <Input type="password" name="password" placeholder="asdASD1234!@#$" onChange={handleChange} />
           </InputArea>
           <WriteButton type="button" onClick={onLoginButtonClick}>
             제출하기
