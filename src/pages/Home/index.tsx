@@ -18,6 +18,7 @@ import { tokenAtom, userAtom } from 'atoms';
 import { useAtom, useAtomValue } from 'jotai';
 import WritePostModal from 'component/CustomModal/WritePostModal';
 import UpdatePostModal from 'component/CustomModal/UpdatePostModal';
+import DeletePostModal from 'component/CustomModal/DeletePostModal';
 import { deletePost } from 'apis/index';
 import { BoardResponse } from 'apis/board/types';
 import { getPosts } from 'apis/board';
@@ -31,6 +32,8 @@ function Home(): JSX.Element {
   const [token, setToken] = useAtom(tokenAtom);
   const [isWritePostModal, setIsWritePostModal] = useState(false);
   const [isUpdatePostModal, setIsUpdatePostModal] = useState(false);
+  const [isDeletePostModal, setIsDeletePostModal] = useState(false);
+
   const [boardPage, setBoardPage] = useState<BoardResponse>();
 
   useEffect(() => {
@@ -60,17 +63,9 @@ function Home(): JSX.Element {
     if (!token) {
       window.alert('로그인 해주세요');
     } else {
-      if (!window.confirm('가장 최근에 생성한 게시물을 정말 삭제하시겠습니까?')) {
-        window.alert('취소하셨습니다.');
-      } else if (boardPage?.results[0]) {
-        deletePost(token, boardPage.results[0].id);
-        window.alert('삭제하였습니다.');
-        window.location.reload();
-      } else {
-        alert('포스트가 존재하지 않습니다.');
-      }
+      setIsDeletePostModal(true);
     }
-  }, [token, boardPage?.results[0]]);
+  }, [token]);
 
   // input 태그의 value에 값을 삽입하면 해당 폼에 그 값이 보임
   return (
@@ -107,6 +102,7 @@ function Home(): JSX.Element {
       </BoardContainer>
       {isWritePostModal && <WritePostModal />}
       {isUpdatePostModal && <UpdatePostModal />}
+      {isDeletePostModal && <DeletePostModal />}
     </HomeContainer>
   );
 }

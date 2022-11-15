@@ -125,9 +125,10 @@ export async function deletePost(token: Token, postId: number) {
     },
   });
   if (response.ok) {
-    return response.status == 204;
+    return response.status === 204;
   } else {
     const json = await response.json();
     const issues = APIIssuesSchema.parse(json);
+    throw window.alert(issues);
   }
 }
