@@ -13,7 +13,7 @@ import Modal from 'react-modal';
 import React, { useCallback, useEffect, useState } from 'react';
 import { tokenAtom, userAtom } from 'atoms';
 import { useAtom, useAtomValue } from 'jotai';
-import { updatePost } from 'apis/index';
+import { updatePost } from 'apis/board/index';
 
 function UpdatePostModal(): JSX.Element {
   const [values, setValues] = useState({ id: '', title: '', content: '' });

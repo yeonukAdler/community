@@ -4,8 +4,8 @@ import { atom, Getter } from 'jotai';
 import { getTokenUser } from 'apis/index';
 
 /*
-  TODO
-
+  TODO:
+  
   함수의 이해 필요
 */
 function atomWithRefresh<T>(fn: (get: Getter) => T) {

@@ -12,7 +12,7 @@ import {
   DifferntPW,
 } from './styles';
 import React, { useState, useCallback } from 'react';
-import { register } from 'apis/index';
+import { register } from 'apis/user/index';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { tokenAtom } from 'atoms';

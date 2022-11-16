@@ -13,7 +13,7 @@ import Modal from 'react-modal';
 import React, { useCallback, useEffect, useState } from 'react';
 import { tokenAtom } from 'atoms';
 import { useAtom } from 'jotai';
-import { deletePost } from 'apis/index';
+import { deletePost } from 'apis/board/index';
 
 function DeletePostModal(): JSX.Element {
   const [values, setValues] = useState({ id: '' });

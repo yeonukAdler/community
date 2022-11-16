@@ -19,7 +19,7 @@ import { useAtom, useAtomValue } from 'jotai';
 import WritePostModal from 'component/CustomModal/WritePostModal';
 import UpdatePostModal from 'component/CustomModal/UpdatePostModal';
 import DeletePostModal from 'component/CustomModal/DeletePostModal';
-import { deletePost } from 'apis/index';
+import { deletePost } from 'apis/board/index';
 import { BoardResponse } from 'apis/board/types';
 import { getPosts } from 'apis/board';
 import { Path } from 'constant';

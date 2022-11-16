@@ -1,7 +1,7 @@
 import { InputContainer, BoardContent, FormText, Input, InputArea, WriteButton, WriteForm, WriteTitle } from './styles';
 import Header from 'component/Header';
 import React, { useState, useCallback, useEffect } from 'react';
-import { login } from 'apis/index';
+import { login } from 'apis/user/index';
 import { useAtom } from 'jotai';
 import { tokenAtom } from 'atoms';
 import { useNavigate } from 'react-router-dom';
