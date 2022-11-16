@@ -11,14 +11,15 @@ import {
 } from './styles';
 import Modal from 'react-modal';
 import React, { useCallback, useEffect, useState } from 'react';
-import { tokenAtom } from 'atoms';
-import { useAtom } from 'jotai';
+import { tokenAtom, userAtom } from 'atoms';
+import { useAtom, useAtomValue } from 'jotai';
 import { updatePost } from 'apis/index';
 
 function UpdatePostModal(): JSX.Element {
   const [values, setValues] = useState({ id: '', title: '', content: '' });
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [token, setToken] = useAtom(tokenAtom);
+  const user = useAtomValue(userAtom);
 
   function openModal() {
     setIsOpen(true);
@@ -31,12 +32,18 @@ function UpdatePostModal(): JSX.Element {
     setValues({ ...values, [name]: value });
   };
 
+  /* 
+  TODO: 
+  
+  해당 브라우저에서 최근에 가입한 계정을 통해 예외처리
+  */
   const onUpdateButtonClick = useCallback(async () => {
     const id = Number(values.id);
     const title = values.title;
     const content = values.content;
     try {
       if (title && content && id) {
+        // if ()
         await updatePost(token, id, title, content);
         closeModal();
         window.location.reload();

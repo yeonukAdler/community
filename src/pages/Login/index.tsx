@@ -41,7 +41,6 @@ function Login(): JSX.Element {
     <InputContainer>
       <BoardContent>
         <WriteTitle>로그인</WriteTitle>
-
         <WriteForm>
           <InputArea>
             <FormText>username : </FormText>

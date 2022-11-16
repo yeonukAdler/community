@@ -15,8 +15,6 @@ function Header(): JSX.Element {
     window.location.reload();
   };
 
-  console.info(user?.results[0].username);
-
   return (
     <HeaderContainer>
       <HeaderButton onClick={() => navigate(`${Path.home}`)}>게시판</HeaderButton>
