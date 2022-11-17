@@ -1,7 +1,7 @@
 import { atomWithStorage } from 'jotai/utils';
-import { Token } from 'apis/types';
+import { Token } from 'apis/user/types';
 import { atom, Getter } from 'jotai';
-import { getTokenUser } from 'apis/index';
+import { getTokenUser } from 'apis/user/index';
 
 /*
   TODO:

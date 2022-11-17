@@ -1,5 +1,5 @@
 import { API_BASE_URL } from 'settings';
-import { Token } from 'apis/types';
+import { Token } from 'apis/user/types';
 
 import { BoardResponse, BoardResponseSchema, APIIssues, APIIssuesSchema } from './types';
 

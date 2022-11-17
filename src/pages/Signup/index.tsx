@@ -35,7 +35,7 @@ function Signup(): JSX.Element {
       const nickname = values.nickname;
       const password = values.password;
       const email = values.email;
-      activeSignup();
+      setActiveSignUp(true);
       if (activeSignUp === true) {
         const userToken = await register(username, nickname, password, email);
         setToken(userToken);

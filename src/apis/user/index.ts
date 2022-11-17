@@ -1,33 +1,26 @@
-import { AccountResponseSchema, APIIssuesSchema, Token, TokenSchema, Account } from 'apis/types';
+import { AccountResponseSchema, APIIssuesSchema, Token, TokenSchema, Account } from 'apis/user/types';
 import { API_BASE_URL } from 'settings';
 
-// export class APIError extends Error {
-//   issues: APIIssues;
+export async function getTokenUser(token: Token): Promise<Account> {
+  const response = await fetch(API_BASE_URL + `/users/`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Token ${token}`,
+    },
+  });
 
-//   constructor(issues: APIIssues) {
-//     super();
-//     this.issues = issues;
-//   }
-// }
+  const json = (await response.json()) as Account;
 
-// export async function getPosts(token: Token): Promise<BoardResponse> {
-//   const responseObject = await fetch(`${API_BASE_URL}/posts/`, {
-//     headers: {
-//       'Content-Type': 'application/json',
-//       Authorization: `Token ${token}`,
-//     },
-//   });
-
-//   const json = (await responseObject.json()) as BoardResponse;
-
-//   if (responseObject.ok) {
-//     const results = BoardResponseSchema.parse(json);
-//     return results;
-//   } else {
-//     let issues = APIIssuesSchema.parse(json);
-//     throw new APIError(issues);
-//   }
-// }
+  if (response.ok) {
+    // json.results = json.results[0];
+    // 최근에 생성된 토큰을 소지한 유저 정보를 가져옴
+    const user = AccountResponseSchema.parse(json);
+    return user;
+  } else {
+    const issues = APIIssuesSchema.parse(json);
+    throw window.alert(issues);
+  }
+}
 
 export async function register(username: string, nickname: string, password: string, email: string): Promise<Token> {
   const response = await fetch(API_BASE_URL + '/register/', {
